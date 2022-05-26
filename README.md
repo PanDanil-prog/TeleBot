@@ -1,3 +1,3 @@
 # TeleBot
 
-polling telegram bot from pyTelegramBotAPI
+polling telegram bot by pyTelegramBotAPI
