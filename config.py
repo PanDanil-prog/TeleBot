@@ -1,7 +1,8 @@
 import keyboards as kb
 import info
 
-API_TOKEN = 'MY_API_TOKEN'
+API_TOKEN = 'API_TOKEN'
+
 
 dict_mm = {'Общежития': [info.dorm_main_info, kb.dorm_keyb_m_up],
            'Стипендии': [info.scholarship_main_info, kb.scholarship_markup],
@@ -13,6 +14,8 @@ dict_mm = {'Общежития': [info.dorm_main_info, kb.dorm_keyb_m_up],
 
 dict_dorm = {'undergrad': [info.dorm_undergrad, kb.dorm_undergrad_keyb_m_up],
              'underdocs': ['Выберите нужную категорию', kb.dorm_underdocs_keyb_m_up],
+             'summer': [info.dorm_summer, kb.dorm_summer_markup],
+             'summer-do': [info.dorm_summer_do, kb.dorm_summer_do_markup],
              'already-living': [info.dorm_underdocs_already_living, kb.dorm_return_to_underdocs_markup],
              'do-not-live': [info.dorm_underdocs_do_not_live, kb.dorm_return_to_underdocs_markup],
              'master': [info.dorm_underdocs_master, kb.dorm_return_to_underdocs_markup],
@@ -29,9 +32,11 @@ dict_scholarship = {'gas': [info.scholarship_gas, kb.gas_markup],
                     'gas-size': [info.scholarship_gas_size, kb.return_to_gas_markup],
                     'gas-criteries': [info.scholarship_gas_criteries, kb.return_to_gas_markup],
                     'pgas': [info.scholarship_pgas, kb.pgas_markup],
-                    'gss': [info.scholarship_pgas, kb.gss_markup],
+                    'gss': [info.scholarship_gss, kb.gss_markup],
                     'gss-size': [info.scholarship_gss_size, kb.return_to_gss_markup],
                     'gss-people': [info.scholarship_gss_people, kb.return_to_gss_markup],
+                    'gss-where': [info.scholarship_gss_where, kb.return_to_gss_markup],
+                    'gss-docs': [info.scholarship_gss_docs, kb.return_to_gss_markup],
                     'pgss': [info.scholarship_pgss, kb.pgss_markup]}
 
 dict_rzd = {'participant': [info.rzd_participant, kb.rzd_return_to_main_menu_markup],
@@ -52,11 +57,16 @@ dict_ssol = {'types': [info.ssol_types, kb.ssol_types_markup],
              'choice': [info.ssol_choice, kb.ssol_return_to_types_markup],
              'creative': [info.ssol_creative, kb.ssol_return_to_types_markup],
              'cost': [info.ssol_cost, kb.ssol_return_to_main],
-             'process': [info.ssol_process, kb.ssol_return_to_main],
+             'process': [info.ssol_process, kb.ssol_process_markup],
+             'process-docs': [info.ssol_process_docs, kb.ssol_process_docs_markup],
+             'process-transfer': [info.ssol_process_transfer, kb.ssol_return_to_process],
+             'process-bilet': [info.ssol_process_bilet, kb.ssol_return_to_process],
+             'process-shedule': [info.ssol_process_shedule, kb.ssol_return_to_process],
              'quiz': [info.ssol_quiz, kb.ssol_return_to_main]}
 
 dict_returns = {'dorm-main': [info.dorm_main_info, kb.dorm_keyb_m_up],
                 'dorm-list': [info.dorm_list, kb.dorm_list_markup],
+                'dorm-summer': [info.dorm_summer, kb.dorm_summer_markup],
                 'undergrad': [info.dorm_undergrad, kb.dorm_undergrad_keyb_m_up],
                 'underdocs': ['Выберите нужную категорию', kb.dorm_underdocs_keyb_m_up],
                 'scholarship': [info.scholarship_main_info, kb.scholarship_markup],
@@ -65,9 +75,8 @@ dict_returns = {'dorm-main': [info.dorm_main_info, kb.dorm_keyb_m_up],
                 'rzd': [info.rzd_bonus_main_info, kb.rzd_markup],
                 'ssol': [info.ssol_main_info, kb.ssol_main_markup],
                 'types': [info.ssol_types, kb.ssol_types_markup],
+                'process': [info.ssol_process, kb.ssol_process_markup],
                 'proj': [info.proj_main_menu_info, kb.projects_main_menu_markup]}
 
-stickers_list = ['CAACAgIAAxkBAAEEw-1ihgAB_86Gjeu8Nc9gp3ywc9WARRAAAlQBAAIw1J0RNRFr8KAgVuskBA',
-                 'CAACAgIAAxkBAAEEw-9ihgElOheZ-oDouQYdDdC7JjRI9AACXAkAAhhC7gh5RWRhM3yStCQE',
-                 'CAACAgIAAxkBAAEEw_FihgF6J7V-GyAqXDhhWlkrKHFpsAACcQUAAj-VzAoDxDb4HRANhSQE',
-                 'CAACAgIAAxkBAAEEw_NihgG22drUnHQcwyuYpLGD9tMcPwACFQADkp8eEX0fbYASIT0nJAQ']
+
+bad_words = ['хуй', 'пизда']

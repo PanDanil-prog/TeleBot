@@ -16,9 +16,10 @@ return_to_scholarship_gas = InlineKeyboardButton(text='Назад', callback_dat
 return_to_rzd_main = InlineKeyboardButton(text='Назад', callback_data='return_rzd')
 return_to_ssol_main = InlineKeyboardButton(text='Назад', callback_data='return_ssol')
 return_to_ssol_types = InlineKeyboardButton(text='Назад', callback_data='return_types')
+return_to_ssol_process = InlineKeyboardButton(text='Назад', callback_data='return_process')
 return_to_proj_main = InlineKeyboardButton(text='Назад', callback_data='return_proj')
 return_to_dorm_list = InlineKeyboardButton(text='Назад', callback_data='return_dorm-list')
-
+return_to_dorm_summer = InlineKeyboardButton(text='Назад', callback_data='return_dorm-summer')
 
 # ----------END BACK BUTTONS----------
 
@@ -49,8 +50,10 @@ main_menu_m_up.row(btn7)
 in_keyboard_undergrad = InlineKeyboardButton('Старшекурсники', callback_data='dorm_undergrad')
 in_keyboard_enrollee = InlineKeyboardButton('Абитуриенты', callback_data='dorm_enrollee')
 dorm_list_button = InlineKeyboardButton('Список Общежитий', callback_data='dorm_list')
+dorm_summer = InlineKeyboardButton('Старшекурсники Лето', callback_data='dorm_summer')
 
 dorm_keyb_m_up = InlineKeyboardMarkup().add(in_keyboard_undergrad, in_keyboard_enrollee)
+dorm_keyb_m_up.row(dorm_summer)
 dorm_keyb_m_up.row(dorm_list_button)
 
 # Dorm undergrad
@@ -69,8 +72,17 @@ under_docs1, under_docs2, under_docs3 = InlineKeyboardButton('Я уже живу
                                         InlineKeyboardButton('Я заканчиваю ВУЗ и планирую поступать в магистратуру',
                                                              callback_data='dorm_master')
 
+dorm_summer_do = InlineKeyboardButton('Что мне надо сделать?', callback_data='dorm_summer-do')
+dorm_summer_docs = InlineKeyboardButton('Получить документы', callback_data='dorm_summer-docs')
+dorm_summer_url = InlineKeyboardButton('Пост в ВК', url='https://vk.com/pos_nngu?w=wall-11163281_13907')
+
 dorm_underdocs_keyb_m_up = InlineKeyboardMarkup(row_width=1).add(under_docs1, under_docs2,
                                                                  under_docs3, return_to_undergrad)
+
+dorm_summer_markup = InlineKeyboardMarkup(row_width=1).add(dorm_summer_do, dorm_summer_docs,
+                                                           dorm_summer_url, return_to_dorm_main)
+
+dorm_summer_do_markup = InlineKeyboardMarkup(row_width=1).add(return_to_dorm_summer)
 
 dorm_return_to_underdocs_markup = InlineKeyboardMarkup().add(return_to_underdocs)
 
@@ -118,9 +130,12 @@ gas_criteries = InlineKeyboardButton('Критерии получения', call
 
 gss_size = InlineKeyboardButton('Размер стипендии', callback_data='scholarship_gss-size')
 gss_people = InlineKeyboardButton('Кому положена социальная стипендия?', callback_data='scholarship_gss-people')
+gss_where = InlineKeyboardButton('Куда подавать', callback_data='scholarship_gss-where')
+gss_documents = InlineKeyboardButton('Какие документы нужны', callback_data='scholarship_gss-docs')
 
 gas_markup = InlineKeyboardMarkup(row_width=1).add(gas_size, gas_criteries, return_to_scholarship_main)
-gss_markup = InlineKeyboardMarkup(row_width=1).add(gss_size, gss_people, return_to_scholarship_main)
+gss_markup = InlineKeyboardMarkup(row_width=1).add(gss_size, gss_people, gss_where, gss_documents,
+                                                   return_to_scholarship_main)
 pgas_markup = InlineKeyboardMarkup().add(return_to_scholarship_main)
 pgss_markup = InlineKeyboardMarkup().add(return_to_scholarship_main)
 
@@ -232,6 +247,22 @@ ssol_types_markup = InlineKeyboardMarkup(row_width=1).add(ssol_types_health, sso
                                                           ssol_types_choice, ssol_types_creative,
                                                           return_to_ssol_main)
 
+# ssol process
+
+ssol_process_docs = InlineKeyboardButton(text='Комплект документов', callback_data='ssol_process-docs')
+ssol_process_shedule = InlineKeyboardButton(text='Режим работы кассы и ПОС', callback_data='ssol_process-shedule')
+ssol_process_transfer = InlineKeyboardButton(text='Трансфер', callback_data='ssol_process-transfer')
+ssol_process_bilet = InlineKeyboardButton(text='Профсоюзный билет', callback_data='ssol_process-bilet')
+ssol_process_docs_take = InlineKeyboardButton(text='Получить заявление', callback_data='ssol_process-docs-take')
+
+
+# markups
+ssol_process_markup = InlineKeyboardMarkup(row_width=1).add(ssol_process_docs, ssol_process_transfer,
+                                                            ssol_process_bilet, ssol_process_shedule,
+                                                            return_to_ssol_main)
+
+ssol_process_docs_markup = InlineKeyboardMarkup(row_width=1).add(ssol_process_docs_take, return_to_ssol_process)
+ssol_return_to_process = InlineKeyboardMarkup().add(return_to_ssol_process)
 ssol_return_to_types_markup = InlineKeyboardMarkup().add(return_to_ssol_types)
 ssol_return_to_main = InlineKeyboardMarkup().add(return_to_ssol_main)
 
