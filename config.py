@@ -78,5 +78,3 @@ dict_returns = {'dorm-main': [info.dorm_main_info, kb.dorm_keyb_m_up],
                 'process': [info.ssol_process, kb.ssol_process_markup],
                 'proj': [info.proj_main_menu_info, kb.projects_main_menu_markup]}
 
-
-bad_words = ['хуй', 'пизда']
