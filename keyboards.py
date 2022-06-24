@@ -2,7 +2,6 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, \
     KeyboardButton, ReplyKeyboardMarkup
 
 # ----------LINKS----------
-insta_url = InlineKeyboardButton(text='Инстаграм', url='https://www.instagram.com/pos_nngu/')
 vk_url = InlineKeyboardButton(text='Группа ВК', url='https://vk.com/pos_nngu')
 
 # ----------Back Buttons----------
@@ -13,6 +12,7 @@ return_to_underdocs = InlineKeyboardButton(text='Назад', callback_data='ret
 return_to_scholarship_main = InlineKeyboardButton(text='Назад', callback_data='return_scholarship')
 return_to_scholarship_gss = InlineKeyboardButton(text='Назад', callback_data='return_gss')
 return_to_scholarship_gas = InlineKeyboardButton(text='Назад', callback_data='return_gas')
+return_to_scholarship_pgss = InlineKeyboardButton(text='Назад', callback_data='return_pgss')
 return_to_rzd_main = InlineKeyboardButton(text='Назад', callback_data='return_rzd')
 return_to_ssol_main = InlineKeyboardButton(text='Назад', callback_data='return_ssol')
 return_to_ssol_types = InlineKeyboardButton(text='Назад', callback_data='return_types')
@@ -20,6 +20,9 @@ return_to_ssol_process = InlineKeyboardButton(text='Назад', callback_data='
 return_to_proj_main = InlineKeyboardButton(text='Назад', callback_data='return_proj')
 return_to_dorm_list = InlineKeyboardButton(text='Назад', callback_data='return_dorm-list')
 return_to_dorm_summer = InlineKeyboardButton(text='Назад', callback_data='return_dorm-summer')
+return_to_contacts_main = InlineKeyboardButton(text='Назад', callback_data='return_contacts')
+return_to_contacts_nngu = InlineKeyboardButton(text='Назад', callback_data='return_nngu')
+return_to_contacts_dekanat = InlineKeyboardButton(text='Назад', callback_data='return_dekanat')
 
 # ----------END BACK BUTTONS----------
 
@@ -35,14 +38,13 @@ welcome_m_up = InlineKeyboardMarkup().add(welcome_button)
 
 # Main Menu
 btn1, btn2, btn3, btn4, \
-btn5, btn6, btn7 = KeyboardButton('Общежития'), KeyboardButton('Стипендии'), \
+btn5, btn6, btn7, btn8 = KeyboardButton('Общежития'), KeyboardButton('Стипендии'), \
                    KeyboardButton('РЖД - бонус'), KeyboardButton('Проекты'), \
                    KeyboardButton('О профсоюзе'), KeyboardButton('Заря'), \
-                   KeyboardButton('Контакты')
+                   KeyboardButton('Медиа ПОС'), KeyboardButton('Контакты')
 
 main_menu_m_up = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2).add(btn1, btn2, btn4, btn6,
-                                                                            btn3, btn5)
-main_menu_m_up.row(btn7)
+                                                                            btn3, btn5, btn7, btn8)
 
 # ----------Dormitories----------
 
@@ -58,7 +60,7 @@ dorm_keyb_m_up.row(dorm_list_button)
 
 # Dorm undergrad
 undergrad_inline_keyb = InlineKeyboardButton('📒 Комплект документов', callback_data='dorm_underdocs')
-undergrad_keyb_url = InlineKeyboardButton('🗿 Перейти в вк', url='https://vk.com/pos_nngu?w=wall-11163281_13296')
+undergrad_keyb_url = InlineKeyboardButton('Пост в ВК', url='https://vk.com/pos_nngu?w=wall-11163281_13296')
 
 dorm_enrolee_markup = InlineKeyboardMarkup().add(return_to_dorm_main)
 dorm_undergrad_keyb_m_up = InlineKeyboardMarkup(row_width=1).add(undergrad_inline_keyb,
@@ -133,14 +135,19 @@ gss_people = InlineKeyboardButton('Кому положена социальна�
 gss_where = InlineKeyboardButton('Куда подавать', callback_data='scholarship_gss-where')
 gss_documents = InlineKeyboardButton('Какие документы нужны', callback_data='scholarship_gss-docs')
 
+pgss_people = InlineKeyboardButton('Кому положена ПГСС', callback_data='scholarship_pgss-people')
+pgss_size = InlineKeyboardButton('Размер ПГСС', callback_data='scholarship_pgss-size')
+
 gas_markup = InlineKeyboardMarkup(row_width=1).add(gas_size, gas_criteries, return_to_scholarship_main)
 gss_markup = InlineKeyboardMarkup(row_width=1).add(gss_size, gss_people, gss_where, gss_documents,
                                                    return_to_scholarship_main)
+
 pgas_markup = InlineKeyboardMarkup().add(return_to_scholarship_main)
-pgss_markup = InlineKeyboardMarkup().add(return_to_scholarship_main)
+pgss_markup = InlineKeyboardMarkup(row_width=1).add(pgss_people, pgss_size, return_to_scholarship_main)
 
 return_to_gss_markup = InlineKeyboardMarkup().add(return_to_scholarship_gss)
 return_to_gas_markup = InlineKeyboardMarkup().add(return_to_scholarship_gas)
+return_to_pgss_markup = InlineKeyboardMarkup().add(return_to_scholarship_pgss)
 
 # ----------END SCHOLARSHIP----------
 
@@ -216,7 +223,8 @@ proj_sso_markup = InlineKeyboardMarkup(row_width=1).add(proj_sso_url, return_to_
 
 # ----------About POS----------
 
-about_pos_markup = InlineKeyboardMarkup().add(vk_url)
+about_pos_markup = InlineKeyboardMarkup(row_width=1).add(vk_url)
+
 
 # ----------END ABOUT POS----------
 
@@ -270,4 +278,44 @@ ssol_return_to_main = InlineKeyboardMarkup().add(return_to_ssol_main)
 
 # ----------Contacts----------
 
-contacts_markup = InlineKeyboardMarkup(row_width=1).add(insta_url, vk_url)
+contacts_nngu = InlineKeyboardButton(text='Контакты ННГУ', callback_data='contacts_nngu')
+
+contacts_otdel = InlineKeyboardButton(text='Стипендиальный отдел', callback_data='contacts_otdel')
+contacts_dekanat = InlineKeyboardButton(text='Деканаты', callback_data='contacts_dekanat')
+contacts_mfc = InlineKeyboardButton(text='МФЦ', callback_data='contacts_mfc')
+
+# Dekanats
+
+dekanat_iitmm = InlineKeyboardButton(text='ИИТММ', callback_data='contacts_dekanat-iitmm')
+dekanat_imomi = InlineKeyboardButton(text='ИМОМИ', callback_data='contacts_dekanat-imomi')
+dekanat_ibbm = InlineKeyboardButton(text='ИББМ', callback_data='contacts_dekanat-ibbm')
+dekanat_ifizj = InlineKeyboardButton(text='ИФИЖ', callback_data='contacts_dekanat-ifizj')
+dekanat_iep = InlineKeyboardButton(text='ИЭП', callback_data='contacts_dekanat-iep')
+dekanat_fsn = InlineKeyboardButton(text='ФСН', callback_data='contacts_dekanat-fsn')
+dekanat_uf = InlineKeyboardButton(text='ЮФ', callback_data='contacts_dekanat-uf')
+dekanat_rf = InlineKeyboardButton(text='РФ', callback_data='contacts_dekanat-rf')
+dekanat_fks = InlineKeyboardButton(text='ФКС', callback_data='contacts_dekanat-fks')
+dekanat_vshopf = InlineKeyboardButton(text='ВШОПФ', callback_data='contacts_dekanat-vshopf')
+dekanat_fzf = InlineKeyboardButton(text='ФЗФ', callback_data='contacts_dekanat-fzf')
+dekanat_hf = InlineKeyboardButton(text='ХФ', callback_data='contacts_dekanat-hf')
+
+
+contacts_markup = InlineKeyboardMarkup(row_width=1).add(contacts_nngu, vk_url)
+contacts_nngu_markup = InlineKeyboardMarkup(row_width=1).add(contacts_dekanat, contacts_mfc,
+                                                             contacts_otdel, return_to_contacts_main)
+contacts_dekanat_markup = InlineKeyboardMarkup(row_width=3).add(dekanat_iitmm, dekanat_imomi, dekanat_ibbm,
+                                                                dekanat_ifizj, dekanat_iep, dekanat_fsn,
+                                                                dekanat_uf, dekanat_rf, dekanat_hf,
+                                                                dekanat_vshopf, dekanat_fzf, dekanat_fks)
+contacts_dekanat_markup.row(return_to_contacts_nngu)
+
+return_to_contacts_nngu_markup = InlineKeyboardMarkup(row_width=1).add(return_to_contacts_nngu)
+return_to_contacts_dekanat_markup = InlineKeyboardMarkup(row_width=1).add(return_to_contacts_dekanat)
+
+# ----------REPORT-----------
+
+report_users = InlineKeyboardButton(text='Пользователи', callback_data='report_users')
+report_buttons = InlineKeyboardButton(text='Кнопки', callback_data='report_buttons')
+
+report_markup = InlineKeyboardMarkup(row_width=1).add(report_users, report_buttons)
+
