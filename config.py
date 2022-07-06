@@ -1,15 +1,15 @@
 import keyboards as kb
 import info
 
-API_TOKEN = 'API_TOKEN'
+API_TOKEN = 'TOKEN'
 
-dict_mm = {'Общежития': [info.dorm_main_info, kb.dorm_keyb_m_up],
-           'Стипендии': [info.scholarship_main_info, kb.scholarship_markup],
-           'Проекты': [info.proj_main_menu_info, kb.projects_main_menu_markup],
-           'Заря': [info.ssol_main_info, kb.ssol_main_markup],
-           'РЖД - бонус': [info.rzd_bonus_main_info, kb.rzd_markup],
-           'О профсоюзе': [info.about_pos, kb.about_pos_markup],
-           'Контакты': [info.contacts_main_info, kb.contacts_markup]}
+dict_mm = {'Общежития 🏡': [info.dorm_main_info, kb.dorm_keyb_m_up],
+           'Стипендии 💰': [info.scholarship_main_info, kb.scholarship_markup],
+           'Проекты 🔥': [info.proj_main_menu_info, kb.projects_main_menu_markup],
+           'Заря 🌳': [info.ssol_main_info, kb.ssol_main_markup],
+           'РЖД - бонус 🎁': [info.rzd_bonus_main_info, kb.rzd_markup],
+           'О профсоюзе 🏠': [info.about_pos, kb.about_pos_markup],
+           'Контакты ☎': [info.contacts_main_info, kb.contacts_markup]}
 
 dict_dorm = {'undergrad': [info.dorm_undergrad, kb.dorm_undergrad_keyb_m_up],
              'underdocs': ['Выберите нужную категорию', kb.dorm_underdocs_keyb_m_up],
@@ -19,6 +19,7 @@ dict_dorm = {'undergrad': [info.dorm_undergrad, kb.dorm_undergrad_keyb_m_up],
              'do-not-live': [info.dorm_underdocs_do_not_live, kb.dorm_return_to_underdocs_markup],
              'master': [info.dorm_underdocs_master, kb.dorm_return_to_underdocs_markup],
              'enrollee': [info.dorm_enrollee, kb.dorm_enrolee_markup],
+             'enrolle-docs': [info.enrolle_docs, kb.dorm_enrolle_docs_markup],
              'list': [info.dorm_list, kb.dorm_list_markup],
              '2': [info.dorm_2, kb.dorm_2_markup],
              '4': [info.dorm_4, kb.dorm_4_markup],
@@ -38,7 +39,15 @@ dict_scholarship = {'gas': [info.scholarship_gas, kb.gas_markup],
                     'gss-docs': [info.scholarship_gss_docs, kb.return_to_gss_markup],
                     'pgss': [info.scholarship_pgss, kb.pgss_markup],
                     'pgss-people': [info.pgss_people, kb.return_to_pgss_markup],
-                    'pgss-size': [info.pgss_size, kb.return_to_pgss_markup]}
+                    'pgss-size': [info.pgss_size, kb.return_to_pgss_markup],
+                    'name': [info.name_main, kb.name_markup],
+                    'name-city': [info.name_city, kb.name_city_markup],
+                    'name-city-size': [info.name_city_size, kb.return_to_name_city_markup],
+                    'name-city-people': [info.name_city_people, kb.return_to_name_city_markup],
+                    'name-city-where': [info.name_city_where, kb.return_to_name_city_markup],
+                    'name-city-docs': [info.name_city_docs, kb.return_to_name_city_markup],
+                    'name-potanin': [info.name_potanin, kb.return_to_scholarship_name_markup],
+                    'alpha': [info.alpha_main, kb.alpha_markup]}
 
 dict_rzd = {'participant': [info.rzd_participant, kb.rzd_return_to_main_menu_markup],
             'timing': [info.rzd_timing, kb.rzd_return_to_main_menu_markup]}
@@ -62,8 +71,7 @@ dict_ssol = {'types': [info.ssol_types, kb.ssol_types_markup],
              'process-docs': [info.ssol_process_docs, kb.ssol_process_docs_markup],
              'process-transfer': [info.ssol_process_transfer, kb.ssol_return_to_process],
              'process-bilet': [info.ssol_process_bilet, kb.ssol_return_to_process],
-             'process-shedule': [info.ssol_process_shedule, kb.ssol_return_to_process],
-             'quiz': [info.ssol_quiz, kb.ssol_return_to_main]}
+             'process-shedule': [info.ssol_process_shedule, kb.ssol_return_to_process]}
 
 dict_contacts = {'nngu': [info.contacts_nngu, kb.contacts_nngu_markup],
                  'dekanat': [info.contacts_dekanat, kb.contacts_dekanat_markup],
@@ -91,6 +99,8 @@ dict_returns = {'dorm-main': [info.dorm_main_info, kb.dorm_keyb_m_up],
                 'gss': [info.scholarship_pgas, kb.gss_markup],
                 'gas': [info.scholarship_gas, kb.gas_markup],
                 'pgss': [info.scholarship_pgss, kb.pgss_markup],
+                'scholarship-name': [info.name_main, kb.name_markup],
+                'scholarship-name-city': [info.name_city, kb.name_city_markup],
                 'rzd': [info.rzd_bonus_main_info, kb.rzd_markup],
                 'ssol': [info.ssol_main_info, kb.ssol_main_markup],
                 'types': [info.ssol_types, kb.ssol_types_markup],
@@ -99,7 +109,8 @@ dict_returns = {'dorm-main': [info.dorm_main_info, kb.dorm_keyb_m_up],
                 'contacts': [info.contacts_main_info, kb.contacts_markup],
                 'nngu': [info.contacts_nngu, kb.contacts_nngu_markup],
                 'dekanat': [info.contacts_dekanat, kb.contacts_dekanat_markup],
-                'report': [info.report_main, kb.report_markup]}
+                'dorm-enrolle': [info.dorm_enrollee, kb.dorm_enrolee_markup],
+                'admin-main': ['Меню администратора, выбирай, что тебе нужно сделать', kb.admin_main_markup]}
 
 buttons_names = {'dorm_4': 'Общежития/Список Общежитий/Общежитие 4',
                  'dorm_6': 'Общежития/Список Общежитий/Общежитие 6',
@@ -131,19 +142,15 @@ buttons_names = {'dorm_4': 'Общежития/Список Общежитий/�
                  'contacts_dekanat-fzf': 'Контакты/Контакты ННГУ/Декатаны/ФЗФ',
                  'ssol_cost': 'Заря/Стоимость',
                  'ssol_process': 'Заря/Процесс приобретения путевок',
-                 '/stop': 'Команда Стоп',
                  'proj_sso': 'Проекты/Конкурс ССО',
-                 'welcome_message': 'Приветственное сообщение',
+                 'welcome_message': 'Привет! 👋',
                  'rzd_participant': 'РЖД - бонус/Как стать участником программы',
                  'rzd_timing': 'РЖД - бонус/Сроки действия программы',
                  'Стипендии': 'Стипендии',
-                 'asfas': 'Хз что за кнопка(asfas)',
                  'Контакты': 'Контакты',
                  'О профсоюзе': 'О профсоюзе',
                  'Медиа ПОС': 'Медиа ПОС',
                  'contacts_nngu': 'Контакты/Контакты ННГУ',
-                 'Пупупу': 'ЧТО ЗА ПУПУПУ',
-                 'Кококо': 'ЧТО ЗА КОКОКО',
                  'dorm_underdocs': 'Общежития/Старшекурсники/Комплект Документов',
                  'dorm_already-living': 'Общежития/Старшекурсники/Комплект Документов/Уже живу',
                  'dorm_do-not-live': 'Общежития/Старшекурсники/Комплект Документов/Не живу',
@@ -154,7 +161,6 @@ buttons_names = {'dorm_4': 'Общежития/Список Общежитий/�
                  'dorm_list': 'Общежития/Список Общежитий',
                  'dorm_2': 'Общежития/Список Общежитий/Общежитие 2',
                  'Заря': 'Заря',
-                 'О': 'Тоже хз что за кнопка',
                  'return_to_mm': 'Вернуться в главное меню',
                  'РЖД - бонус': 'РЖД - бонус',
                  'Проекты': 'Проекты',
@@ -182,5 +188,14 @@ buttons_names = {'dorm_4': 'Общежития/Список Общежитий/�
                  'ssol_battle': 'Заря/Смены/Битва студсоветов',
                  'ssol_choice': 'Заря/Смены/Разумный Выбор',
                  'ssol_creative': 'Заря/Смены/Креативные индустрии',
-                 'ssol_process-docs': 'Заря/Процедура приобретения путевки/Комплект документов'
-                 }
+                 'ssol_process-docs': 'Заря/Процедура приобретения путевки/Комплект документов',
+                 'scholarship_name': 'Стипендии/Именные стипендии',
+                 'dorm_enrolle-docs': 'Общежития/Абитуриенты/Перечень документов',
+                 'scholarship_name-city': 'Стипендии/Именные стипендии/Главы города',
+                 'scholarship_alpha': 'Стипендии/Альфа шанс',
+                 'scholarship_name-city-docs': 'Стипендии/Именные стипендии/Главы города/Комплект Документов',
+                 'scholarship_name-city-people': 'Стипендии/Именные стипендии/Главы города/Кому положена?',
+                 'scholarship_name-potanin': 'Стипендии/Именные стипендии/Потанина',
+                 'dorm_enrolle-docs-take': 'Общежития/Абитуриенты/Перечень документов/Получить документы',
+                 'scholarship_name-city-size': 'Стипендии/Именные стипендии/Главы города/Размер стипендии',
+                 'scholarship_name-city-where': 'Стипендии/Именные стипендии/Главы города/Куда подавать?'}

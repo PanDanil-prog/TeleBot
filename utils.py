@@ -26,6 +26,9 @@ def get_buttons_excel():
 
 
 def get_users_excel():
+
+    '''Create xlsx file with data about users'''
+
     if not os.path.exists('report_users.xlsx'):
         with open('report_users.xlsx', 'w') as users_file:
             pass
@@ -39,4 +42,3 @@ def get_users_excel():
                         sorted(users, key=lambda d: d['Количество нажатых кнопок'], reverse=True))
 
     df.to_excel('./report_users.xlsx', sheet_name='Пользователи')
-

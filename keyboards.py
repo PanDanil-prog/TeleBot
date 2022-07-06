@@ -7,6 +7,7 @@ vk_url = InlineKeyboardButton(text='Группа ВК', url='https://vk.com/pos_
 # ----------Back Buttons----------
 
 return_to_dorm_main = InlineKeyboardButton(text='Назад', callback_data='return_dorm-main')
+return_to_enrolle = InlineKeyboardButton(text='Назад', callback_data='return_dorm-enrolle')
 return_to_undergrad = InlineKeyboardButton(text='Назад', callback_data='return_undergrad')
 return_to_underdocs = InlineKeyboardButton(text='Назад', callback_data='return_underdocs')
 return_to_scholarship_main = InlineKeyboardButton(text='Назад', callback_data='return_scholarship')
@@ -23,6 +24,9 @@ return_to_dorm_summer = InlineKeyboardButton(text='Назад', callback_data='r
 return_to_contacts_main = InlineKeyboardButton(text='Назад', callback_data='return_contacts')
 return_to_contacts_nngu = InlineKeyboardButton(text='Назад', callback_data='return_nngu')
 return_to_contacts_dekanat = InlineKeyboardButton(text='Назад', callback_data='return_dekanat')
+return_to_admin_main = InlineKeyboardButton(text='Назад', callback_data='return_admin-main')
+return_to_scholarship_name = InlineKeyboardButton(text='Назад', callback_data='return_scholarship-name')
+return_to_scholarship_name_city = InlineKeyboardButton(text='Назад', callback_data='return_scholarship-name-city')
 
 # ----------END BACK BUTTONS----------
 
@@ -38,10 +42,10 @@ welcome_m_up = InlineKeyboardMarkup().add(welcome_button)
 
 # Main Menu
 btn1, btn2, btn3, btn4, \
-btn5, btn6, btn7, btn8 = KeyboardButton('Общежития'), KeyboardButton('Стипендии'), \
-                   KeyboardButton('РЖД - бонус'), KeyboardButton('Проекты'), \
-                   KeyboardButton('О профсоюзе'), KeyboardButton('Заря'), \
-                   KeyboardButton('Медиа ПОС'), KeyboardButton('Контакты')
+btn5, btn6, btn7, btn8 = KeyboardButton('Общежития 🏡'), KeyboardButton('Стипендии 💰'), \
+                         KeyboardButton('РЖД - бонус 🎁'), KeyboardButton('Проекты 🔥'), \
+                         KeyboardButton('О профсоюзе 🏠'), KeyboardButton('Заря 🌳'), \
+                         KeyboardButton('Медиа ПОС 🔗'), KeyboardButton('Контакты ☎')
 
 main_menu_m_up = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2).add(btn1, btn2, btn4, btn6,
                                                                             btn3, btn5, btn7, btn8)
@@ -58,11 +62,19 @@ dorm_keyb_m_up = InlineKeyboardMarkup().add(in_keyboard_undergrad, in_keyboard_e
 dorm_keyb_m_up.row(dorm_summer)
 dorm_keyb_m_up.row(dorm_list_button)
 
+# Dorm enrolle
+
+enrolle_docs = InlineKeyboardButton(text='Перечень документов', callback_data='dorm_enrolle-docs')
+enrolle_docs_take = InlineKeyboardButton(text='Получить документы', callback_data='dorm_enrolle-docs-take')
+
+enrolle_post_vk = InlineKeyboardButton(text='Пост ВК', url='https://vk.com/pos_nngu?w=wall-11163281_14179')
+dorm_enrolle_docs_markup = InlineKeyboardMarkup(row_width=1).add(enrolle_docs_take, return_to_enrolle)
+dorm_enrolee_markup = InlineKeyboardMarkup(row_width=1).add(enrolle_docs, enrolle_post_vk, return_to_dorm_main)
+
 # Dorm undergrad
-undergrad_inline_keyb = InlineKeyboardButton('📒 Комплект документов', callback_data='dorm_underdocs')
+undergrad_inline_keyb = InlineKeyboardButton('Комплект документов', callback_data='dorm_underdocs')
 undergrad_keyb_url = InlineKeyboardButton('Пост в ВК', url='https://vk.com/pos_nngu?w=wall-11163281_13296')
 
-dorm_enrolee_markup = InlineKeyboardMarkup().add(return_to_dorm_main)
 dorm_undergrad_keyb_m_up = InlineKeyboardMarkup(row_width=1).add(undergrad_inline_keyb,
                                                                  undergrad_keyb_url, return_to_dorm_main)
 
@@ -124,8 +136,12 @@ GAS_button = InlineKeyboardButton('ГАС', callback_data='scholarship_gas')
 PGAS_button = InlineKeyboardButton('ПГАС', callback_data='scholarship_pgas')
 GSS_button = InlineKeyboardButton('ГСС', callback_data='scholarship_gss')
 PGSS_button = InlineKeyboardButton('ПГСС', callback_data='scholarship_pgss')
+name_button = InlineKeyboardButton('Именные стипендии', callback_data='scholarship_name')
+alpha_button = InlineKeyboardButton('Альфа - шанс', callback_data='scholarship_alpha')
 
 scholarship_markup = InlineKeyboardMarkup(row_width=2).add(GAS_button, GSS_button, PGAS_button, PGSS_button)
+scholarship_markup.row(name_button)
+scholarship_markup.row(alpha_button)
 
 gas_size = InlineKeyboardButton('Размер стипендии', callback_data='scholarship_gas-size')
 gas_criteries = InlineKeyboardButton('Критерии получения', callback_data='scholarship_gas-criteries')
@@ -138,12 +154,27 @@ gss_documents = InlineKeyboardButton('Какие документы нужны',
 pgss_people = InlineKeyboardButton('Кому положена ПГСС', callback_data='scholarship_pgss-people')
 pgss_size = InlineKeyboardButton('Размер ПГСС', callback_data='scholarship_pgss-size')
 
+name_city = InlineKeyboardButton('Стипендия Главы Города Нижнего Новгорода', callback_data='scholarship_name-city')
+name_potanin = InlineKeyboardButton('Стипендия фонда Владимира Потанина', callback_data='scholarship_name-potanin')
+
+name_city_size = InlineKeyboardButton('Размер стипендии', callback_data='scholarship_name-city-size')
+name_city_people = InlineKeyboardButton('Кому положена?', callback_data='scholarship_name-city-people')
+name_city_where = InlineKeyboardButton('Куда подавать?', callback_data='scholarship_name-city-where')
+name_city_docs = InlineKeyboardButton('Комплект документов', callback_data='scholarship_name-city-docs')
+
 gas_markup = InlineKeyboardMarkup(row_width=1).add(gas_size, gas_criteries, return_to_scholarship_main)
 gss_markup = InlineKeyboardMarkup(row_width=1).add(gss_size, gss_people, gss_where, gss_documents,
                                                    return_to_scholarship_main)
-
 pgas_markup = InlineKeyboardMarkup().add(return_to_scholarship_main)
 pgss_markup = InlineKeyboardMarkup(row_width=1).add(pgss_people, pgss_size, return_to_scholarship_main)
+name_markup = InlineKeyboardMarkup(row_width=1).add(name_city, name_potanin, return_to_scholarship_main)
+name_city_markup = InlineKeyboardMarkup(row_width=1).add(name_city_size, name_city_people,
+                                                         name_city_docs, name_city_where, return_to_scholarship_name)
+return_to_scholarship_name_markup = InlineKeyboardMarkup().add(return_to_scholarship_name)
+return_to_name_city_markup = InlineKeyboardMarkup(row_width=1).add(return_to_scholarship_name_city)
+name_potanin_markup = InlineKeyboardMarkup(row_width=1).add(return_to_scholarship_name)
+alpha_markup = InlineKeyboardMarkup(row_width=1).add(return_to_scholarship_main)
+
 
 return_to_gss_markup = InlineKeyboardMarkup().add(return_to_scholarship_gss)
 return_to_gas_markup = InlineKeyboardMarkup().add(return_to_scholarship_gas)
@@ -225,7 +256,6 @@ proj_sso_markup = InlineKeyboardMarkup(row_width=1).add(proj_sso_url, return_to_
 
 about_pos_markup = InlineKeyboardMarkup(row_width=1).add(vk_url)
 
-
 # ----------END ABOUT POS----------
 
 # ----------SSOL ZARYA----------
@@ -234,14 +264,12 @@ about_pos_markup = InlineKeyboardMarkup(row_width=1).add(vk_url)
 ssol_types = InlineKeyboardButton(text='Смены', callback_data='ssol_types')
 ssol_cost = InlineKeyboardButton(text='Стоимость', callback_data='ssol_cost')
 ssol_process = InlineKeyboardButton(text='Процедура приобретения путевки', callback_data='ssol_process')
-ssol_quiz = InlineKeyboardButton(text='Розыгрыш путевки', callback_data='ssol_quiz')
 ssol_url1 = InlineKeyboardButton(text='Заполнить заявку',
                                  url='https://docs.google.com/forms/d/11kVGuX7I1FYQgYGhUh9FPRCe4loujZW9MKCBi-J5W0U/edit')
 ssol_url2 = InlineKeyboardButton(text='Группа ВК', url='https://vk.com/ssol_zarya_nngu')
 
 ssol_main_markup = InlineKeyboardMarkup(row_width=2).add(ssol_types, ssol_cost)
 ssol_main_markup.row(ssol_process)
-ssol_main_markup.row(ssol_quiz)
 ssol_main_markup.row(ssol_url1)
 ssol_main_markup.row(ssol_url2)
 
@@ -262,7 +290,6 @@ ssol_process_shedule = InlineKeyboardButton(text='Режим работы кас
 ssol_process_transfer = InlineKeyboardButton(text='Трансфер', callback_data='ssol_process-transfer')
 ssol_process_bilet = InlineKeyboardButton(text='Профсоюзный билет', callback_data='ssol_process-bilet')
 ssol_process_docs_take = InlineKeyboardButton(text='Получить заявление', callback_data='ssol_process-docs-take')
-
 
 # markups
 ssol_process_markup = InlineKeyboardMarkup(row_width=1).add(ssol_process_docs, ssol_process_transfer,
@@ -299,7 +326,6 @@ dekanat_vshopf = InlineKeyboardButton(text='ВШОПФ', callback_data='contacts
 dekanat_fzf = InlineKeyboardButton(text='ФЗФ', callback_data='contacts_dekanat-fzf')
 dekanat_hf = InlineKeyboardButton(text='ХФ', callback_data='contacts_dekanat-hf')
 
-
 contacts_markup = InlineKeyboardMarkup(row_width=1).add(contacts_nngu, vk_url)
 contacts_nngu_markup = InlineKeyboardMarkup(row_width=1).add(contacts_dekanat, contacts_mfc,
                                                              contacts_otdel, return_to_contacts_main)
@@ -314,8 +340,20 @@ return_to_contacts_dekanat_markup = InlineKeyboardMarkup(row_width=1).add(return
 
 # ----------REPORT-----------
 
-report_users = InlineKeyboardButton(text='Пользователи', callback_data='report_users')
-report_buttons = InlineKeyboardButton(text='Кнопки', callback_data='report_buttons')
+admin_send_all = InlineKeyboardButton(text='Рассылка', callback_data='admin_send-all')
+admin_report = InlineKeyboardButton(text='Отчеты', callback_data='admin_report')
 
-report_markup = InlineKeyboardMarkup(row_width=1).add(report_users, report_buttons)
+admin_send_all_edit = InlineKeyboardButton(text='Редактировать', callback_data='admin_send-all-edit')
+admin_send_all_view = InlineKeyboardButton(text='Посмотреть', callback_data='admin_send-all-view')
+admin_send_all_send = InlineKeyboardButton(text='Отправить всем', callback_data='admin_send-all-send')
 
+admin_report_users = InlineKeyboardButton(text='Пользователи', callback_data='admin_report-users')
+admin_report_buttons = InlineKeyboardButton(text='Кнопки', callback_data='admin_report-buttons')
+
+admin_main_markup = InlineKeyboardMarkup(row_width=1).add(admin_send_all, admin_report)
+
+admin_report_markup = InlineKeyboardMarkup(row_width=1).add(admin_report_users, admin_report_buttons,
+                                                            return_to_admin_main)
+
+admin_send_all_markup = InlineKeyboardMarkup(row_width=1).add(admin_send_all_send, admin_send_all_edit,
+                                                              admin_send_all_view, return_to_admin_main)
